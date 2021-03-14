@@ -33,6 +33,7 @@ const generate = () => {
     const newSpan = document.createElement('span');
     newSpan.innerHTML = inputSplited[index];
     newSpan.className = generateClass();
+    newSpan.addEventListener('click', (e) => { e.target.className = generateClass(); });
     showResult.appendChild(newSpan);
   }
 };
