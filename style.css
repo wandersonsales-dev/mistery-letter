@@ -90,3 +90,7 @@ main {
 .rotateright {
   transform: rotate(5deg);
 }
+
+.skewleft {
+  transform: skewX(10deg);
+}
