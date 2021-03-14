@@ -12,9 +12,13 @@ const classes = {
 const generateClass = () => {
   let newClass = '';
   Object.keys(classes).forEach((el) => {
-    const sortedNumber = Math.ceil(Math.random() * ((classes[el].length) + 1));
+    const sortedNumber = Math.round(Math.random() * ((classes[el].length)));
     if (sortedNumber !== ((classes[el].length) + 1)) {
-      newClass += `${sortedNumber}: ${classes[el][sortedNumber - 1]} `;
+      if (classes[el][sortedNumber - 1] === undefined) {
+        newClass += `${classes[el][sortedNumber]} `;
+      } else {
+        newClass += `${classes[el][sortedNumber - 1]} `;
+      }
     }
   });
   return newClass;
@@ -40,5 +44,4 @@ const generate = () => {
 
 window.onload = () => {
   buttonGenerate.addEventListener('click', generate);
-  generateClass();
 };
