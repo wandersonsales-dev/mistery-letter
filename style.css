@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#content {
+  max-width: 1280px;
+  height : auto;
+  padding: 10px;
+  margin: 0 auto;
+  background-color: aqua;
+}
+
+main {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+}
+
+#carta-texto {
+  width: 60%;
+}
