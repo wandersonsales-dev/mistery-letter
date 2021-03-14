@@ -9,7 +9,6 @@
   height : auto;
   padding: 10px;
   margin: 0 auto;
-  background-color: aqua;
 }
 
 main {
@@ -18,11 +17,32 @@ main {
   padding: 10px;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: red;
+}
+
+#enter-value {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
 }
 
 #carta-texto {
   width: 60%;
+}
+
+#carta-gerada {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+}
+
+#carta-gerada span {
+  margin: 5px;
 }
