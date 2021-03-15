@@ -98,3 +98,17 @@ main {
 .skewright {
   transform: skewX(-10deg);
 }
+
+#contador {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#carta-contador {
+  text-align: center;
+}

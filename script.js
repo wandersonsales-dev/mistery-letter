@@ -1,6 +1,7 @@
 const input = document.querySelector('#carta-texto');
 const buttonGenerate = document.querySelector('#criar-carta');
 const showResult = document.querySelector('#carta-gerada');
+const idCartaContador = document.querySelector('#carta-contador');
 const classesObj = {
   grupo1: ['newspaper', 'magazine1', 'magazine2'],
   grupo2: ['medium', 'big', 'reallybig'],
@@ -68,6 +69,7 @@ const generate = () => {
     newSpan.addEventListener('click', generateClass);
     showResult.appendChild(newSpan);
   }
+  idCartaContador.innerHTML = `Número de palavras: ${inputSplited.length}`;
 };
 
 window.onload = () => {
