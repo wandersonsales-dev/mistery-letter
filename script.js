@@ -44,7 +44,6 @@ const newClassRandom = (e) => {
 
 const generateClass = (e) => {
   if (e.className === '') {
-    console.log('1');
     let newClass = '';
     generateNewClass().forEach((el) => {
       newClass += `${el} `;
@@ -70,7 +69,7 @@ const generate = () => {
     newSpan.addEventListener('click', generateClass);
     showResult.appendChild(newSpan);
   }
-  idCartaContador.innerHTML = `Número de palavras: ${inputSplited.length}`;
+  idCartaContador.innerHTML = inputSplited.length;
 };
 
 window.onload = () => {
