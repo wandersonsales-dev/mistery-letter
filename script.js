@@ -22,7 +22,7 @@ const generateNewClass = () => {
 };
 
 const checkClasses = (newClass) => {
-  const spans = document.querySelector('span');
+  const spans = document.querySelectorAll('span');
   let isEqual = false;
   for (let index = 0; index < spans.length; index += 1) {
     if (spans.className === newClass) {
