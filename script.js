@@ -1,26 +1,47 @@
 const input = document.querySelector('#carta-texto');
 const buttonGenerate = document.querySelector('#criar-carta');
 const showResult = document.querySelector('#carta-gerada');
+const grupo1 = ['newspaper', 'magazine1', 'magazine2'];
+const grupo2 = ['medium', 'big', 'reallybig'];
+const grupo3 = ['rotateleft', 'rotateright'];
+const grupo4 = ['skewleft', 'skewright'];
 
-const classes = {
-  grupo1: ['newspaper', 'magazine1', 'magazine2'],
-  grupo2: ['medium', 'big', 'reallybig'],
-  grupo3: ['rotateleft', 'rotateright'],
-  grupo4: ['skewleft', 'skewright'],
+const group1Sorted = () => {
+  const number = Math.floor(Math.random() * (grupo1.length + 1));
+  if (grupo1[number] !== undefined) {
+    return grupo1[number];
+  }
+};
+
+const group2Sorted = () => {
+  const number = Math.floor(Math.random() * (grupo2.length + 1));
+  if (grupo2[number] !== undefined) {
+    return grupo2[number];
+  }
+};
+
+const group3Sorted = () => {
+  const number = Math.floor(Math.random() * (grupo3.length + 1));
+  if (grupo1[number] !== undefined) {
+    return grupo3[number];
+  }
+};
+
+const group4Sorted = () => {
+  const number = Math.floor(Math.random() * (grupo4.length + 1));
+  if (grupo1[number] !== undefined) {
+    return grupo4[number];
+  }
 };
 
 const generateClass = () => {
   let newClass = '';
-  Object.keys(classes).forEach((el) => {
-    const sortedNumber = Math.round(Math.random() * ((classes[el].length)));
-    if (sortedNumber !== ((classes[el].length) + 1)) {
-      if (classes[el][sortedNumber - 1] === undefined) {
-        newClass += `${classes[el][sortedNumber]} `;
-      } else {
-        newClass += `${classes[el][sortedNumber - 1]} `;
-      }
-    }
-  });
+  newClass += `${group1Sorted()} `;
+  newClass += `${group2Sorted()} `;
+  newClass += `${group3Sorted()} `;
+  newClass += `${group4Sorted()} `;
+  // https://stackoverflow.com/a/64448355
+  newClass = newClass.split('undefined').join('');
   return newClass;
 };
 
