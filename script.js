@@ -2,56 +2,31 @@ const input = document.querySelector('#carta-texto');
 const buttonGenerate = document.querySelector('#criar-carta');
 const showResult = document.querySelector('#carta-gerada');
 const idCartaContador = document.querySelector('#carta-contador');
+const spans = document.getElementsByTagName('span');
 
-const classesObj = {
-  grupo1: ['newspaper', 'magazine1', 'magazine2'],
-  grupo2: ['medium', 'big', 'reallybig'],
-  grupo3: ['rotateleft', 'rotateright'],
-  grupo4: ['skewleft', 'skewright'],
-};
+const grupo1 = ['newspaper', 'magazine1', 'magazine2'];
+const grupo2 = ['medium', 'big', 'reallybig'];
+const grupo3 = ['rotateleft', 'rotateright'];
+const grupo4 = ['skewleft', 'skewright'];
 
-const generateNewClass = () => {
-  const newClass = [];
-  Object.values(classesObj).forEach((el) => {
-    const random = Math.floor(Math.random() * (el.length + 1));
-    if (el.length !== random) {
-      newClass.push(el[random]);
-    }
-  });
-  return newClass;
-};
-
-const checkClasses = (newClass) => {
-  const spans = document.getElementsByTagName('span');
-  let isEqual = false;
-  for (let index = 0; index < spans.length; index += 1) {
-    if (spans.className === newClass) {
-      isEqual = true;
-      break;
-    }
-  }
-  return isEqual;
-};
-
-const newClassRandom = (e) => {
-  do {
-    e.target.className = '';
-    generateNewClass().forEach((el) => {
-      e.target.classList.add(el);
-    });
-  } while (checkClasses(e.target.className) === true);
-};
-
-const generateClassInitial = () => {
-  let newClass = '';
-  generateNewClass().forEach((el) => {
-    newClass += `${el} `;
-  });
-  return newClass;
-};
-
+// https://github.com/tryber/sd-010-a-project-mistery-letter/pull/7/files
+// As duas funções abaixo foram baseadas na ideia do Lucas André, conforme link acima
 const generateClass = (e) => {
-  newClassRandom(e);
+  const gp1 = Math.floor(Math.random() * 3);
+  const gp2 = Math.floor(Math.random() * 3);
+  const gp3 = Math.floor(Math.random() * 2);
+  const gp4 = Math.floor(Math.random() * 2);
+  e.target.className = `${grupo1[gp1]} ${grupo2[gp2]} ${grupo3[gp3]} ${grupo4[gp4]}`;
+};
+
+const generateClassAlternative = () => {
+  for (let index = 0; index < spans.length; index += 1) {
+    const gp1 = Math.floor(Math.random() * 3);
+    const gp2 = Math.floor(Math.random() * 3);
+    const gp3 = Math.floor(Math.random() * 2);
+    const gp4 = Math.floor(Math.random() * 2);
+    spans[index].className = `${grupo1[gp1]} ${grupo2[gp2]} ${grupo3[gp3]} ${grupo4[gp4]}`;
+  }
 };
 
 const generate = () => {
@@ -66,11 +41,11 @@ const generate = () => {
   for (let index = 0; index < inputSplited.length; index += 1) {
     const newSpan = document.createElement('span');
     newSpan.innerHTML = inputSplited[index];
-    newSpan.className = generateClassInitial();
     newSpan.addEventListener('click', generateClass);
     showResult.appendChild(newSpan);
   }
   idCartaContador.innerHTML = inputSplited.length;
+  generateClassAlternative();
 };
 
 window.onload = () => {
