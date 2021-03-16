@@ -22,7 +22,7 @@ const generateNewClass = () => {
 };
 
 const checkClasses = (newClass) => {
-  const spans = document.querySelectorAll('span');
+  const spans = document.getElementsByTagName('span');
   let isEqual = false;
   for (let index = 0; index < spans.length; index += 1) {
     if (spans.className === newClass) {
@@ -37,19 +37,20 @@ const newClassRandom = (e) => {
   do {
     e.target.className = '';
     generateNewClass().forEach((el) => {
-      e.target.className += `${el} `;
+      e.target.classList.add(el);
     });
   } while (checkClasses(e.target.className) === true);
 };
 
+const generateClassInitial = () => {
+  let newClass = '';
+  generateNewClass().forEach((el) => {
+    newClass += `${el} `;
+  });
+  return newClass;
+};
+
 const generateClass = (e) => {
-  if (e.className === '') {
-    let newClass = '';
-    generateNewClass().forEach((el) => {
-      newClass += `${el} `;
-    });
-    return newClass;
-  }
   newClassRandom(e);
 };
 
@@ -65,7 +66,7 @@ const generate = () => {
   for (let index = 0; index < inputSplited.length; index += 1) {
     const newSpan = document.createElement('span');
     newSpan.innerHTML = inputSplited[index];
-    newSpan.className = generateClass(newSpan);
+    newSpan.className = generateClassInitial();
     newSpan.addEventListener('click', generateClass);
     showResult.appendChild(newSpan);
   }
